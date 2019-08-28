@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="my" uri="/WEB-INF/tag" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +11,11 @@
 <body>
 
 	<form action="index.action">
-		<input name="txt"> 
-		<input type="submit">
+		<my:selectbyarray items="${states }" name="txt" all="true" current="${state }" ></my:selectbyarray>
+		<my:selectbylist items="${bookList }" name="text" all="true" current="${bid }"></my:selectbylist>
+		</select> <input type="submit">
 	</form>
-	<c:forEach items="${bookList }" var="row">
+	<c:forEach items="${statesList }" var="row">
 		${row.name }<br>
 	</c:forEach>
 </body>

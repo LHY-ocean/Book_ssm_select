@@ -9,7 +9,7 @@ public class Book {
 	private int typeid;
 	private String typename;
 	
-	public static String[] states = {"全部","剩余","售空"};
+	public static String[] states = {"待","剩余","售空"};
 	public String getStatename() {
 		return states[state];
 	}

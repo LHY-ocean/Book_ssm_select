@@ -26,30 +26,45 @@ public class BookController {
 	}
 	
 	@RequestMapping("index")
-	public String select(ModelMap m,String txt) {
+	public String select(ModelMap m,Integer txt,Integer text) {
 		String where="";
-		if(txt!=null&&txt!="")
-			where=" where book.name like '%"+txt+"%'";
-		m.put("bookList", bService.select(where));
+		if(txt!=null&&txt>-1) {
+			where=" where book.state="+txt;
+			if(text!=null&&text>0)
+				where=where+" and book.id="+text;
+			else text=0;
+		}
+		else {
+			if(text!=null&&text>0)
+				where="where book.id="+text;
+			else text=0;
+			txt=-1;
+		}
+		
+		m.put("statesList", bService.select(where));
+		m.put("bookList", bService.select(""));
+		m.put("states", Book.states);
+		m.put("state", txt);
+		m.put("bid", text);
 		return "index";
 	}
 	
 	@RequestMapping("delete")
 	public String delete(ModelMap m, int id) {
 		bService.delete(id);
-		return select(m,null);
+		return select(m,null,null);
 	}
 	
 	@RequestMapping("insert")
 	public String insert(ModelMap m, Book b) {
 		bService.insert(b);
-		return select(m,null);
+		return select(m,null,null);
 	}
 	
 	@RequestMapping("update")
 	public String update(ModelMap m, Book b) {
 		bService.update(b);
-		return select(m,null);
+		return select(m,null,null);
 	}
 	
 	@RequestMapping("add")

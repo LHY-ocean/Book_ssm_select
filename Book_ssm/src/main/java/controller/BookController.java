@@ -31,7 +31,7 @@ public class BookController {
 		if(txt!=null&&txt!="")
 			where=" where book.name like '%"+txt+"%'";
 		m.put("bookList", bService.select(where));
-		return "Book/index";
+		return "index";
 	}
 	
 	@RequestMapping("delete")

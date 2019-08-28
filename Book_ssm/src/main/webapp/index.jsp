@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,5 +9,12 @@
 </head>
 <body>
 
+	<form action="index.action">
+		<input name="txt"> 
+		<input type="submit">
+	</form>
+	<c:forEach items="${bookList }" var="row">
+		${row.name }<br>
+	</c:forEach>
 </body>
 </html>

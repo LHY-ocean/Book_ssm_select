@@ -13,10 +13,24 @@
 	<form action="index.action">
 		<my:selectbyarray items="${states }" name="txt" all="true" current="${state }" ></my:selectbyarray>
 		<my:selectbylist items="${bookList }" name="text" all="true" current="${bid }"></my:selectbylist>
+		<my:selectbylist items="${typeList }" name="type" all="true" current="${type }"></my:selectbylist>
 		</select> <input type="submit">
 	</form>
-	<c:forEach items="${statesList }" var="row">
-		${row.name }<br>
-	</c:forEach>
+	<table>
+		<tr>
+			<th>姓名</th>
+			<th>类型</th>
+			<th>外键</th>
+		</tr>
+		
+			<c:forEach items="${statesList }" var="row">
+			<tr>
+				<td>${row.name }</td>
+				<td>${row.statename }</td>
+				<td>${row.typename }</td>
+				</tr>
+			</c:forEach>
+		
+	</table>
 </body>
 </html>
